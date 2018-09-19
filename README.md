@@ -9,7 +9,7 @@ Analysis
     #inspects file, returning size, lines, characters and content, and columns
     #useage: bash data_inspection filename
 
-    for var in "$1"                                                 #takes field 1 (filename) and assigns it to var
+    for var in "$1"                                             #takes field 1 (filename) and assigns it to var
     do
         echo -e "File size:\t\t" $(du -h $var | cut -f1)        #du -h: prints disk useage of file; cut -f1: print number only
         echo -e "Total lines:\t\t" $(wc -l < $var)              #prints total number of lines in file; < : print number only
@@ -21,6 +21,7 @@ Analysis
      done
 
    In the terminal, executing "bash data_inspection 'filename'" will run the script on the given file
+   
    Prints file size, total lines, total characters and character content, and number of columns in first line 
   
   Using data_inspection, the following data was obtained:
