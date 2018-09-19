@@ -1,4 +1,6 @@
 # BCB54X_Unix_Assignment
-Stupid test thing
-How do I even change lines?
-Why would 
+
+Assignment goal is to process data files and prepare them for processing
+
+*/
+ls
