@@ -1,0 +1,13 @@
+#inspects file, returning size, lines, characters and content, and columns
+#useage: bash data_inspection filename
+
+for var in "$1"							#takes field 1 (filename) and assigns it to var
+do
+	echo -e "File size:\t\t" $(du -h $var | cut -f1)	#du -h: prints disk useage of file; cut -f1: print number only 
+	echo -e "Total lines:\t\t" $(wc -l < $var)		#prints total number of lines in file; < : print number only
+	echo -e "Total characters:\t" $(wc -m < $var)		#prints total number of characters in file;  < : print number only
+	echo -e "Character content:\t" $(file $var)		#prints character content 
+	echo -e "Columns in first line:\t"\
+		$(awk -F "\t" '{print NF; exit}' $var)		#prints number of columns in first line
+		
+done
