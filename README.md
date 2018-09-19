@@ -5,10 +5,10 @@ Assignment goal is to analyze data files and prepare them for processing
 Analysis
   
   Created bash script "data_inspection"
-    Will add code snipet later, currently can't install Markdown because IT won't grant me admin privileges on my work computer
+   Will add code snipet later, currently can't install Markdown because IT won't grant me admin privileges on my work computer
     
-    In the terminal, executing "bash data_inspection 'filename'" will run the script on the given file
-    Prints file size, total lines, total characters and character content, and number of columns in first line 
+   In the terminal, executing "bash data_inspection 'filename'" will run the script on the given file
+   Prints file size, total lines, total characters and character content, and number of columns in first line 
   
   Using data_inspection, the following data was obtained:
 
@@ -21,8 +21,8 @@ Analysis
   
     snp_position.txt
       File size:               84K
-  Total lines:             984
-  Total characters:        82763
-  Character content:       snp_position.txt: ASCII text
-  Columns in first line:   15
+      Total lines:             984
+      Total characters:        82763
+      Character content:       snp_position.txt: ASCII text
+      Columns in first line:   15
 
