@@ -64,8 +64,29 @@ Preparation for processing
     
   Inspected snp_position_relevant.txt and the transposed_maize/teosinte_genotype.txt files using head and wc-l. Found that the transposed_maize/teosintegenotype.txt files had two more lines at the beginning of the file (986 total) compared to the snp_position_relevant.txt file. Removed those lines with sed.
   
-  sed '2d ; 3d' transposed_maize_genotypes.txt > 1transposed_maize_genotypes.txt
-  sed '2d ; 3d' transposed_teosinte_genotypes.txt > 1transposed_teosinte_genotypes.txt
+    sed '2d ; 3d' transposed_maize_genotypes.txt > 1transposed_maize_genotypes.txt
+    sed '2d ; 3d' transposed_teosinte_genotypes.txt > 1transposed_teosinte_genotypes.txt
+  
+  Attempted to join the 1transposed_maize/teosinte_genotypes.txt files with the snp_position_relevant file. Failed due to an error saying that one of the fields was "not in sorted order." Tried sorting, then joining, but that failed. Then realized that the column 1 header of the 1transposed files was "Sample_ID" while the column 1 header of the snp_position_relevant file was "SNP_ID." Used sed to change "Sample_ID" to "SNP_ID."
+  
+    sed 's/Sample_ID/SNP_ID/g' 1transposed_maize_genotypes.txt > 2transposed_maize_genotypes.txt
+    sed 's/Sample_ID/SNP_ID/g' 1transposed_teosinte_genotypes.txt > 2transposed_teosinte_genotypes.txt
+    
+  Join then worked correctly
+  
+    join -1 1 -2 1 snp_position_relevant.txt 2transposed_maize_genotypes.txt > joined_maize.txt
+    join -1 1 -2 1 snp_position_relevant.txt 2transposed_teosinte_genotypes.txt > joined_teosinte.txt
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+
 
 
   
