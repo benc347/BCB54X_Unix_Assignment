@@ -77,7 +77,17 @@ Preparation for processing
     join -1 1 -2 1 snp_position_relevant.txt 2transposed_maize_genotypes.txt > joined_maize.txt
     join -1 1 -2 1 snp_position_relevant.txt 2transposed_teosinte_genotypes.txt > joined_teosinte.txt
 
+  Deleted transposed_maize/teosinte and 1transposed_maize/teosinte files. Renamed 2transposed_maize/teosinte_genotype.txt files transposed_maize/teosinte_genotype_edi.txt using the mv command
+  
+    mv 2transposed_maize_genotypes.txt transposed_maize_genotypes_edited.txt
+    mv 2transposed_teosinte_genotypes.txt transposed_teosinte_genotypes_edited.txt
+    
+  Tried to git add . afterwards, but it wouldn't allow it unless I added --all or --ignore-removal. Used --ignore-removal. Files deleted are still absent from directory, but they are present on Github. Not sure if that's due to the --ignore-removal command (I think it holds onto removed files, but I'm not sure)
+  
+  
 
+
+    
     
     
     
