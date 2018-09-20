@@ -57,3 +57,18 @@ Preparation for processing
         
     awk -f transpose.awk maize_genotypes.txt > transposed_maize_genotypes.txt
     awk -f transpose.awk teosinte_genotypes.txt > transposed_teosinte_genotypes.txt
+    
+  Cut out necessary (SNP ID, Chromosome, Position) columns from snp_position.txt
+  
+    cut -f 1,3,4 snp_position.txt > snp_position_relevant.txt
+    
+  Inspected snp_position_relevant.txt and the transposed_maize/teosinte_genotype.txt files using head and wc-l. Found that the transposed_maize/teosintegenotype.txt files had two more lines at the beginning of the file (986 total) compared to the snp_position_relevant.txt file. Removed those lines with sed.
+  
+  sed '2d ; 3d' transposed_maize_genotypes.txt > 1transposed_maize_genotypes.txt
+  sed '2d ; 3d' transposed_teosinte_genotypes.txt > 1transposed_teosinte_genotypes.txt
+
+
+  
+    
+  
+  
