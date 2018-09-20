@@ -84,7 +84,29 @@ Preparation for processing
     
   Tried to git add . afterwards, but it wouldn't allow it unless I added --all or --ignore-removal. Used --ignore-removal. Files deleted are still absent from directory, but they are present on Github. Not sure if that's due to the --ignore-removal command (I think it holds onto removed files, but I'm not sure)
   
+  Messed some stuff up pretty bad while trying to fix files with improper headers following sorting and replacing "unknown." Reset back to this point. Had just made a new directory in Unix_Assignment called processed_data. Copied over joined_maize.txt and joined_teosinte.txt from data directory and took headers from the aforementioned files and added them to new files.
   
+    mkdir processed_data
+    
+    cp joined* ~/Unix_Assignment/processed_data
+    
+    head -n1 joined_maize.txt | tee > asc_joined_maize.txt > des_joined_maize.txt
+    head -n1 joined_teosinte.txt | tee > asc_joined_teosinte.txt > des_joined_teosinte.txt
+
+  Created joined_maize/teosinte.txt files without headers for sorting without the header getting in the way
+    
+    sed '1d' joined_maize.txt > nohead_joined_maize.txt
+    sed '1d' joined_teosinte.txt > nohead_joined_teosinte.txt
+
+  For the ascending files, first used sed to replace "unknown" with "?". Next, sorted first alphanumerically within the string (-V) on the chromosome column, then numerically on the position column. Then append to file with the appropriate header. Did the same for the descending files, but replaced "unknown" with "-" then and sorted the position column recursively as well.
+  
+    sed 's/unknown/?/g' nohead_joined_maize.txt | sort -k2,2V -k3,3n >> asc_joined_maize.txt
+    sed 's/unknown/?/g' nohead_joined_teosinte.txt | sort -k2,2V -k3,3n >> asc_joined_teosinte.txt
+  
+    sed 's/unknown/-/g' nohead_joined_maize.txt | sort -k2,2V -k3,3nr >> des_joined_maize.txt 
+    sed 's/unknown/-/g' nohead_joined_teosinte.txt | sort -k2,2V -k3,3nr >> des_joined_teosinte.txt 
+
+
 
 
     
