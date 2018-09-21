@@ -141,7 +141,13 @@ Preparation for processing
   
   While looking over files, realized that "unknown" in des_joined_maize.txt had been replaced by a "?" rather than a "-" like it should have been (ignore the commit message, it has it written the other way around). Also removed unnecessary files.
   
+  Realized that none of the unknowns should've been replaced. Should have replaced ?/? instead. Changed sed commands.
   
+    sed 's:?/?:?:g' nohead_joined_maize.txt | sort -k2,2V -k3,3n >> asc_joined_maize.txt
+    sed 's:?/?:?:g' nohead_joined_teosinte.txt | sort -k2,2V -k3,3n >> asc_joined_teosinte.txt
+
+    sed 's:?/?:-:g' nohead_joined_maize.txt | sort -k2,2V -k3,3nr >> des_joined_maize.txt
+    sed 's:?/?:-:g' nohead_joined_teosinte.txt | sort -k2,2V -k3,3nr >> des_joined_teosinte.txt
 
 
 
