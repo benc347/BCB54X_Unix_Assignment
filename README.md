@@ -90,8 +90,8 @@ Preparation for processing
     
     cp joined* ~/Unix_Assignment/processed_data
     
-    head -n1 joined_maize.txt | tee > asc_joined_maize.txt > des_joined_maize.txt
-    head -n1 joined_teosinte.txt | tee > asc_joined_teosinte.txt > des_joined_teosinte.txt
+    head -n1 joined_maize.txt | tee asc_joined_maize.txt des_joined_maize.txt
+    head -n1 joined_teosinte.txt | tee asc_joined_teosinte.txt des_joined_teosinte.txt
 
   Created joined_maize/teosinte.txt files without headers for sorting without the header getting in the way
     
@@ -149,6 +149,7 @@ Preparation for processing
     sed 's:?/?:-:g' nohead_joined_maize.txt | sort -k2,2V -k3,3nr >> des_joined_maize.txt
     sed 's:?/?:-:g' nohead_joined_teosinte.txt | sort -k2,2V -k3,3nr >> des_joined_teosinte.txt
 
+  Copied fixed asc/des_joined_maize/teosinte.txt files over to files directory after removing all files from the files directory, save the script. Ran the script on each of the corrected asc/des_joined_maize/teosinte.txt files. Removed the two multiple_chromosome_descending_maize/teosinte.txt and two unknown_chromosome_descending_maize/teosinte.txt files as they were not required for the assignment. Also fixed a typo in the README in the description of how the headers were added to new files (lines 87-94, there should not have been > after tee).
 
 
 
