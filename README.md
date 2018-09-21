@@ -106,6 +106,42 @@ Preparation for processing
     sed 's/unknown/-/g' nohead_joined_maize.txt | sort -k2,2V -k3,3nr >> des_joined_maize.txt 
     sed 's/unknown/-/g' nohead_joined_teosinte.txt | sort -k2,2V -k3,3nr >> des_joined_teosinte.txt 
 
+  Copied the four files created in the step above to a new directory named files. Created a script to separate the four files by chromosome.
+  
+    #on a file with a sorted column, generates separate files: one file for each unique value in the sorted
+    #column, with all rows bearing that unique value. Header of source file is given to all new files.
+
+    #useage: bash split_file filename column_to_sort what_to_name_new_files
+
+    column=$2                                                                               #sets input column_to_sort value as the varia$
+
+    for file in $1                                                                          #sets input filename as the variable "file"
+    do
+        awk 'FNR > 1 {print $'$column'}' $file | uniq > temp.txt                        #skip the first line of the file, pick the "c$
+
+        while read line_temp; do                                                        #go line by line through temp file
+
+                head -n1 $file > "$line_temp"_"$3".txt                                  #take header of source file and output it to $
+
+                while read line_file; do                                                #go line by line through file
+
+                        awk -v var=$line_temp '$'$column' == var\
+                        && $3 != "multiple"' >> "$line_temp"_"$3".txt                   #set current line of temp file as variable, t$
+                                                                                        #and whose third field is not equal to "multi$
+
+                done <$file
+
+        done <temp.txt
+
+    rm temp.txt                                                                             #remove temp file to keep things clean
+
+    done
+    
+  Ran the script, generating the files required for the assignment. Running a script on all four source files (asc_joined_maize/teosinte.txt and des_joined_maize/teosinte.txt) created two files of the unknown data (? or -) and two files of the multiple data for both the ascending and descending source files. 
+  
+  
+
+
 
 
 
