@@ -139,6 +139,8 @@ Preparation for processing
     
   Ran the script, generating the files required for the assignment. Running a script on all four source files (asc_joined_maize/teosinte.txt and des_joined_maize/teosinte.txt) created two files of the unknown data (? or -) and two files of the multiple data for both the ascending and descending source files. 
   
+  While looking over files, realized that "unknown" in des_joined_maize.txt had been replaced by a "?" rather than a "-" like it should have been (ignore the commit message, it has it written the other way around). Also removed unnecessary files.
+  
   
 
 
